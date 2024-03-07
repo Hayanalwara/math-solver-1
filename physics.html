@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="button"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Physics Calculator</h1>
+    <div>
+      <label for="initialVelocity">Initial Velocity (m/s):</label>
+      <input type="text" id="initialVelocity" placeholder="Enter initial velocity...">
+    </div>
+    <div>
+      <label for="finalVelocity">Final Velocity (m/s):</label>
+      <input type="text" id="finalVelocity" placeholder="Enter final velocity...">
+    </div>
+    <div>
+      <label for="initialPosition">Initial Position (m):</label>
+      <input type="text" id="initialPosition" placeholder="Enter initial position...">
+    </div>
+    <div>
+      <label for="finalPosition">Final Position (m):</label>
+      <input type="text" id="finalPosition" placeholder="Enter final position...">
+    </div>
+    <div>
+      <label for="time">Time (s):</label>
+      <input type="text" id="time" placeholder="Enter time...">
+    </div>
+    <div>
+      <input type="button" value="Calculate" onclick="calculatePhysics()">
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculatePhysics() {
+      var initialVelocity = parseFloat(document.getElementById('initialVelocity').value);
+      var finalVelocity = parseFloat(document.getElementById('finalVelocity').value);
+      var initialPosition = parseFloat(document.getElementById('initialPosition').value);
+      var finalPosition = parseFloat(document.getElementById('finalPosition').value);
+      var time = parseFloat(document.getElementById('time').value);
+
+      var speed = (finalPosition - initialPosition) / time;
+      var acceleration = (finalVelocity - initialVelocity) / time;
+      var displacement = finalPosition - initialPosition;
+
+      var resultText = "Speed: " + speed.toFixed(2) + " m/s<br>";
+      resultText += "Acceleration: " + acceleration.toFixed(2) + " m/s^2<br>";
+      resultText += "Displacement: " + displacement.toFixed(2) + " m";
+
+      document.getElementById('result').innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Solver</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Math Solver</h1>
+    </header>
+    <div style="display: flex; justify-content: center;">
+        <form id="mathForm">
+            <input type="text" id="num1" name="num1" placeholder="Enter number 1" required>
+            <input type="text" id="num2" name="num2" placeholder="Enter number 2" required>
+            <br><br>
+            <input type="submit" value="Add">
+            <input type="submit" value="Subtract">
+            <input type="submit" value="Multiply">
+            <input type="submit" value="Divide">
+        </form>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('mathForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+
+            // Check if the input values are valid numbers
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').innerHTML = 'Please enter valid numbers.';
+                return;
+            }
+
+            // Determine which operation was selected
+            var operation = event.submitter.value;
+            var result;
+
+            // Perform the selected operation
+            switch (operation) {
+                case 'Add':
+                    result = num1 + num2;
+                    break;
+                case 'Subtract':
+                    result = num1 - num2;
+                    break;
+                case 'Multiply':
+                    result = num1 * num2;
+                    break;
+                case 'Divide':
+                    if (num2 === 0) {
+                        result = 'Cannot divide by zero.';
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+                default:
+                    result = 'Invalid operation';
+            }
+
+            // Display the result
+            document.getElementById('result').innerHTML = 'Result: ' + result;
+        });
+    </script>
+</body>
+</html>

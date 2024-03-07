@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element Hydrogen Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Element Hydrogen Counter</h1>
+    <label for="elementInput">Enter Element Name:</label>
+    <input type="text" id="elementInput" placeholder="e.g., water, hydrogen">
+    <button onclick="countHydrogen()">Count Hydrogen</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function countHydrogen() {
+      var elementName = document.getElementById('elementInput').value.toLowerCase();
+      var hydrogenCount = getHydrogenCount(elementName);
+      if (hydrogenCount !== null) {
+        document.getElementById('result').innerHTML = "Number of Hydrogen atoms in " + elementName + ": " + hydrogenCount;
+      } else {
+        document.getElementById('result').innerHTML = "Element not found or unsupported.";
+      }
+    }
+
+    function getHydrogenCount(element) {
+      switch (element) {
+        case 'water':
+          return 2;
+        case 'hydrogen':
+          return 2;
+        case 'oxygen':
+          return 0;
+        default:
+          return null;
+      }
+    }
+  </script>
+</body>
+</html>
